@@ -1,0 +1,16 @@
+yêu cầu mặc định proxy.txt ua.txt
+- node HTTP2.js [Target] [Time]
+ví dụ: node HTTP2.js https://daukute.us 60
+
+- node CF-TLS.js [Target] [Time] [Thread] [Proxyfile]
+ví dụ: node CF-TLS.js https://daukute.us 60 100 proxy.txt
+
+- node CFS.js [Target] [Time] [Threads] [Mode][Proxy List] [Requests Per IP]
+ví dụ: node CFS.js https://daukute.us 60 500 GET proxy.txt 100
+
+- node TLS-BYPASS.js [Target] [Time] [Threads] [Proxy List] [Requests Per IP]
+ví dụ: node TLS-BYPASS.js https://daukute.us 60 500 proxy.txt 100
+
+yêu cầu proxy mặc định http.txt, ua.txt
+- node TLS-kill.js [Host] [Threads] [RQ/S] [Mode] [Time]
+ví dụ: node TLS-kill https://daukute.us 50 64 GET 60
