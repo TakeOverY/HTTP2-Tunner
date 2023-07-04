@@ -12,20 +12,18 @@
 
 ***Yêu cầu:***
 
-`python` `nodejs` `golang`
+`python` `nodejs`
 
 ***Cài đặt:***
 
 trên `ubuntu`
 ```
-apt install golang -y
 apt install nodejs -y
 apt install npm -Y
 apt install python3-pip -y
 ```
 trên `centos`
 ```
-yum install golang -y
 yum install nodejs -y
 yum install npm -Y
 yum install python3-pip -y
